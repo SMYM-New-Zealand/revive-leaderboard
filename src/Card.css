@@ -1,0 +1,38 @@
+.card {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  background-color: #b2aeae;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  color: white;
+}
+
+.rank {
+  flex: 0 0 15%;
+  text-align: center;
+}
+
+.details {
+  flex: 0 0 60%;          
+  text-align: left;
+  display: flex;
+  flex-direction: column; 
+  justify-content: center;
+}
+
+.details .name {
+  font-weight: 600;       
+  font-size: 1.1rem;
+  margin: 0;              
+}
+
+.details .city {
+  font-size: 0.9rem;
+  margin: 0;              
+}
+
+.pts {
+  flex: 0 0 25%;
+  text-align: center;
+}
