@@ -10,11 +10,11 @@ function App() {
       <div class="container">
           <div class="teen-container">
             <h1>Teens</h1>
-            <Card/>
+            <Card rank={1} name={"John Smith"} city={"Auckland"} pts={100}/>
           </div>
           <div class="youth-container">
             <h1>Youth</h1>
-            <Card/>
+            <Card rank={1} name={"John Smith"} city={"Auckland"} pts={100}/>
           </div>
       </div>
     </div>
