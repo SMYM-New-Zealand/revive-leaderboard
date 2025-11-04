@@ -17,4 +17,5 @@ function Card({ rank, name, city, pts }) {
     </div>
   );
 }
+
 export default Card;
