@@ -49,7 +49,7 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Revive 2025 LeaderBoards</h1>
+      <h1>Revive 2025 Leaderboards</h1>
       <div className="container">
         <div className="teen-container">
           <h2>Teens</h2>
