@@ -4,8 +4,9 @@
   padding: 2rem;
   text-align: center;
   padding: 0;
-  background-color: #313030;
-  color: #E0E0E0;
+  background-color: #302f2f;
+  color:white;
+;
 }
 .container {
   display: grid;
@@ -24,7 +25,8 @@
   padding: 1rem;              
   box-sizing: border-box;
   overflow: scroll;
-  background-color: #444444;
+  background-color: #3d3c3c;
+  color: white;
 }
 
 .youth-container {
@@ -32,7 +34,8 @@
   padding: 1rem;
   box-sizing: border-box;
   overflow: scroll;
-  background-color: #444444;
+  background-color: #3d3c3c;
+  color: white;
 }
 
 @media (max-width: 768px) {
