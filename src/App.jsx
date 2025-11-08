@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react'
 function App() {
   const [teenData, setTeenData] = useState([])
   const [youthData, setYouthData] = useState([])
+  const [lastUpdated, setLastUpdated] = useState(null)
 
   const id = "16sF1nIZLOu3ev4soFttJKJe2b8Dvij8bEp_40APM72E"
   const url = `https://docs.google.com/spreadsheets/d/${id}/gviz/tq?tqx=out:json`
@@ -16,6 +17,8 @@ function App() {
       const json = text.slice(text.indexOf('(') + 1, text.lastIndexOf(')'))
       const data = JSON.parse(json)
 
+      console.log(data)
+
       const teens = []
       const youth = []
 
@@ -23,12 +26,16 @@ function App() {
         const entry = {
           name: r.c[0]?.v || "",
           city: r.c[1]?.v || "",
-          totalPoints: Number(r.c[r.c.length - 1]?.v || 0)
+          totalPoints: Number(r.c[r.c.length - 2]?.v || 0)
         }
         const category = r.c[2]?.v?.toLowerCase() || ""
         if (category === "teen" || category === "teens") teens.push(entry)
         else if (category === "youth") youth.push(entry)
       })
+
+     let tempDate = data.table.rows[1].c[data.table.rows[1].c.length - 1]?.f;
+     
+     setLastUpdated(tempDate)
 
       teens.sort((a, b) => b.totalPoints - a.totalPoints)
       youth.sort((a, b) => b.totalPoints - a.totalPoints)
@@ -50,6 +57,7 @@ function App() {
   return (
     <div className="App">
       <h1>Revive 2025 Leaderboards</h1>
+      <h3>Last Updated: {lastUpdated}</h3>
       <div className="container">
         <div className="teen-container">
           <h2>Teens</h2>
