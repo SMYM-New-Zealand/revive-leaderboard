@@ -20,7 +20,7 @@
 
 }
 
-.teen-container {
+.girls-container {
   border-radius: 12px;
   padding: 1rem;              
   box-sizing: border-box;
@@ -29,7 +29,7 @@
   color: white;
 }
 
-.youth-container {
+.boys-container {
   border-radius: 12px;
   padding: 1rem;
   box-sizing: border-box;

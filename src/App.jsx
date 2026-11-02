@@ -3,13 +3,12 @@ import Card from './Card'
 import { useEffect, useState } from 'react'
 
 function App() {
-  const [teenData, setTeenData] = useState([])
-  const [youthData, setYouthData] = useState([])
+  const [girlsData, setGirlsData] = useState([])
+  const [boysData, setBoysData] = useState([])
   const [lastUpdated, setLastUpdated] = useState(null)
 
-  const id = "16sF1nIZLOu3ev4soFttJKJe2b8Dvij8bEp_40APM72E"
+  const id = "1LsAtKHyktFznZR0GF0KmvLT1Y-7gAPM4wSKGVDSDqWg"
   const url = `https://docs.google.com/spreadsheets/d/${id}/gviz/tq?tqx=out:json`
-
   const fetchLeaderboard = async () => {
     try {
       const res = await fetch(url)
@@ -17,10 +16,8 @@ function App() {
       const json = text.slice(text.indexOf('(') + 1, text.lastIndexOf(')'))
       const data = JSON.parse(json)
 
-      console.log(data)
-
-      const teens = []
-      const youth = []
+      const girls = []
+      const boys = []
 
       data.table.rows.forEach(r => {
         const entry = {
@@ -28,20 +25,20 @@ function App() {
           city: r.c[1]?.v || "",
           totalPoints: Number(r.c[r.c.length - 2]?.v || 0)
         }
-        const category = r.c[2]?.v?.toLowerCase() || ""
-        if (category === "teen" || category === "teens") teens.push(entry)
-        else if (category === "youth") youth.push(entry)
+        console.log(entry)
+        const category = r.c[2]?.v || ""
+        if (category === "Female") girls.push(entry)
+        else if (category === "Male") boys.push(entry)
       })
 
      let tempDate = data.table.rows[1].c[data.table.rows[1].c.length - 1]?.f;
-     
      setLastUpdated(tempDate)
 
-      teens.sort((a, b) => b.totalPoints - a.totalPoints)
-      youth.sort((a, b) => b.totalPoints - a.totalPoints)
+      girls.sort((a, b) => b.totalPoints - a.totalPoints)
+      boys.sort((a, b) => b.totalPoints - a.totalPoints)
 
-      setTeenData(teens.map((e, i) => ({ ...e, rank: i + 1 })))
-      setYouthData(youth.map((e, i) => ({ ...e, rank: i + 1 })))
+      setGirlsData(girls.map((e, i) => ({ ...e, rank: i + 1 })))
+      setBoysData(boys.map((e, i) => ({ ...e, rank: i + 1 })))
 
     } catch (err) {
       console.error("Failed to fetch leaderboard:", err)
@@ -56,12 +53,12 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Revive 2025 Leaderboards</h1>
+      <h1>Revive 2026 Leaderboards</h1>
       <h3>Last Updated: {lastUpdated}</h3>
       <div className="container">
-        <div className="teen-container">
-          <h2>Teens</h2>
-          {teenData.map(entry => (
+        <div className="girls-container">
+          <h2>Girls</h2>
+          {girlsData.map(entry => (
             <Card
               key={entry.rank}
               rank={entry.rank}
@@ -71,9 +68,9 @@ function App() {
             />
           ))}
         </div>
-        <div className="youth-container">
-          <h2>Youth</h2>
-          {youthData.map(entry => (
+        <div className="boys-container">
+          <h2>Boys</h2>
+          {boysData.map(entry => (
             <Card
               key={entry.rank}
               rank={entry.rank}
