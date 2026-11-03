@@ -70,7 +70,7 @@ function App() {
               name={entry.name}
               city={entry.city}
               pts={entry.totalPoints}
-              color="#e2c64a"
+              color="#cc972d"
             />
           ))}
         </div>
@@ -84,7 +84,7 @@ function App() {
               name={entry.name}
               city={entry.city}
               pts={entry.totalPoints}
-              color="#5cab7d"
+              color="#464831"
             />
           ))}
         </div>

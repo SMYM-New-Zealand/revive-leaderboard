@@ -4,8 +4,8 @@
   padding: 2rem;
   text-align: center;
   padding: 0;
-  background-color: #2d2c2c;
-  color:white;
+  background-color: #ebeef1;
+  color:black;
 ;
 }
 .container {
@@ -23,16 +23,16 @@
   border-radius: 12px;
   box-sizing: border-box;
   overflow: scroll;
-  color: white;
-  background-color: #2d2c2c;
+  color: black;
+  background-color: #ebeef1;
 }
 
 .boys-container {
   border-radius: 12px;
   box-sizing: border-box;
   overflow: scroll;
-  color: white;
-  background-color: #2d2c2c;
+  color: black;
+  background-color: #ebeef1;
 }
 
 @media (max-width: 768px) {
