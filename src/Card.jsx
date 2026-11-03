@@ -1,9 +1,9 @@
 import React from "react";
 import "./Card.css"
 
-function Card({ rank, name, city, pts }) {
+function Card({ rank, name, city, pts, color }) {
   return (
-    <div className="card">
+    <div className="card " style={{ backgroundColor: color }}>
       <div className="rank">
         <h2>{rank}</h2>
       </div>

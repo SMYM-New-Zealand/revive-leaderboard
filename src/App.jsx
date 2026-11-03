@@ -6,6 +6,8 @@ function App() {
   const [girlsData, setGirlsData] = useState([])
   const [boysData, setBoysData] = useState([])
   const [lastUpdated, setLastUpdated] = useState(null)
+  const [boysTotal, setBoysTotal] = useState(0)
+  const [girlsTotal, setGirlsTotal] = useState(0)
 
   const id = "1LsAtKHyktFznZR0GF0KmvLT1Y-7gAPM4wSKGVDSDqWg"
   const url = `https://docs.google.com/spreadsheets/d/${id}/gviz/tq?tqx=out:json`
@@ -39,6 +41,8 @@ function App() {
 
       setGirlsData(girls.map((e, i) => ({ ...e, rank: i + 1 })))
       setBoysData(boys.map((e, i) => ({ ...e, rank: i + 1 })))
+      setGirlsTotal(girls.reduce((sum, girl) => sum + girl.totalPoints, 0))
+      setBoysTotal(boys.reduce((sum, boy) => sum + boy.totalPoints, 0))
 
     } catch (err) {
       console.error("Failed to fetch leaderboard:", err)
@@ -53,11 +57,12 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Revive 2026 Leaderboards</h1>
+      <h1 className='topheader'>Revive 2026 Leaderboards</h1>
       <h3>Last Updated: {lastUpdated}</h3>
       <div className="container">
         <div className="girls-container">
-          <h2>Girls</h2>
+          <h1>Girls</h1>
+          <h3>Total Points: {girlsTotal}</h3>
           {girlsData.map(entry => (
             <Card
               key={entry.rank}
@@ -65,11 +70,13 @@ function App() {
               name={entry.name}
               city={entry.city}
               pts={entry.totalPoints}
+              color="#e2c64a"
             />
           ))}
         </div>
         <div className="boys-container">
-          <h2>Boys</h2>
+          <h1>Boys</h1>
+          <h3>Total Points: {boysTotal}</h3>
           {boysData.map(entry => (
             <Card
               key={entry.rank}
@@ -77,6 +84,7 @@ function App() {
               name={entry.name}
               city={entry.city}
               pts={entry.totalPoints}
+              color="#5cab7d"
             />
           ))}
         </div>
